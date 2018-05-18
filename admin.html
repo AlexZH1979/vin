@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script defer src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script defer src="js/bootstrap.js"></script>
+
+    <title>Admin Panel</title>
+</head>
+<body>
+<div class="container">
+    <h1>Vehicle Information</h1>
+    <form>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">VIN:</span>
+            </div>
+            <input name="vin" type="text" class="form-control" id="vin" placeholder="Enter VIN" required>
+        </div>
+        <div class="form-group row">
+            <label for="model" class="col-1">Model:</label>
+            <input type="text" class="form-control  col-11" id="model" placeholder="Enter Model">
+        </div>
+        <div class="form-group row">
+            <label for="number" class="col-1">Number:</label>
+            <input type="text" class="form-control col-11" id="number" placeholder="Enter Number">
+        </div>
+        <div class="form-group row">
+            <label for="year" class="col-1">Year:</label>
+            <input type="text" class="form-control col-11" id="year" placeholder="Enter Year">
+        </div>
+        <div class="form-group row">
+            <label for="color" class="col-1">Color:</label>
+            <input type="text" class="form-control col-11" id="color" placeholder="Enter Color">
+        </div>
+        <div class="form-group row">
+            <label for="engine" class="col-1">Engine:</label>
+            <input type="text" class="form-control col-11" id="engine" placeholder="Enter Engine">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Action:</span>
+            </div>
+            <select id="action" class="custom-select" name="action">
+                <option value="registration" selected>Registration</option>
+                <option value="restrictions">Restrictions</option>
+            </select>
+        </div>
+        <div class="custom_registration">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Operation:</span>
+                </div>
+                <textarea name="operation" type="text" class="form-control" id="operation"
+                          placeholder="Enter Operation"></textarea>
+            </div>
+        </div>
+        <div class="custom_restrictions">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Date of imposition of restriction:</span>
+                </div>
+                <input name="date_imposition_restriction" type="text" class="form-control"
+                       id="date_imposition_restriction" placeholder="Date of imposition of restriction" required>
+            </div>
+        </div>
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+</body>
+</html>
