@@ -1,27 +1,37 @@
-const CONTRACT_ADDRESS = "n1pzf1DmNXJvCKmrMjD8f8tDv4pQZKAYPeN";
+const CONTRACT_ADDRESS = "n1wKCgN67DEi2SdXYyymr35vqJFmiEXaNL6";
 
-class ContractApi{
+class ContractApi {
     constructor(contractAddress = CONTRACT_ADDRESS) {
         let NebPay = require("nebpay");
         this.nebPay = new NebPay();
         this._contractAddress = contractAddress;
     }
 
-    _simulateCall({ value = "0", callArgs = "[]", callFunction , callback }) {
+    _simulateCall({value = "0", callArgs = "[]", callFunction, callback, listener}) {
         this.nebPay.simulateCall(this._contractAddress, value, callFunction, callArgs, {
-            callback: function(resp){
-                if(callback){
+            callback: function (resp) {
+                if (callback) {
                     callback(resp);
+                }
+            },
+            listener: function (resp) {
+                if (listener) {
+                    listener(resp);
                 }
             }
         });
     }
 
-    _call({ value = "0", callArgs = "[]", callFunction , callback }) {
-        this.nebPay.call(this._contractAddress, value, callFunction, callArgs, {
-            callback: function(resp){
-                if(callback){
+    _call({value = "0", callArgs = "[]", callFunction, callback,listener}) {
+        var serialNumber = this.nebPay.call(this._contractAddress, value, callFunction, callArgs, {
+            callback: function (resp) {
+                if (callback) {
                     callback(resp);
+                }
+            },
+            listener: function (resp) {
+                if (listener) {
+                    listener(resp);
                 }
             }
         });
@@ -30,18 +40,27 @@ class ContractApi{
 }
 
 class VenicleInformationContractApi extends ContractApi {
-    add(text, cb) {
-        this._simulateCall({
-            callArgs : `["${text}"]`,
-            callFunction : "add",
+    add(obj, cb) {
+        const data = Base64.encode(JSON.stringify(obj));
+        this._call({
+            callArgs: `["${data}"]`,
+            callFunction: "add",
             callback: cb
         });
     }
 
-    get(text, cb) {
-        this._simulateCall({
-            callArgs : `["${text}"]`,
-            callFunction : "get",
+    get(data, cb, ls) {
+        var serialNumber = this._call({
+            callArgs: `["${data}"]`,
+            callFunction: "getByVin",
+            callback: cb,
+            listener: ls
+        });
+    }
+    getByWallet(text, cb) {
+        this._call({
+            callArgs:  [text],
+            callFunction: "getByWallet",
             callback: cb
         });
     }

@@ -6490,6 +6490,12 @@ require=(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c=
                 };
                 options = extend(defaultOptions, options);
                 this._pay.submit(NAS, to, value, payload, options);
+            },
+            queryPayInfo: function(serialNumber, options) {
+                //var url = config.payUrl + "/query?payId=" + serialNumber;
+                options = extend(defaultOptions, options);
+                var url = options.callback + "/query?payId=" + serialNumber;
+                return http.get(url);
             }
         };
 

@@ -1,0 +1,26 @@
+{
+  "category": "jump",
+  "des": "confirmTransfer",
+  "pageParams": {
+    "serialNumber": "jCoraV1XgvIrgaRPiWEhjPR2FS2C7GGw",
+    "goods": {
+      "name": "",
+      "desc": "",
+      "orderId": "",
+      "ext": ""
+    },
+    "pay": {
+      "currency": "NAS",
+      "to": "n1mcjW1c8yNVNRYzGPej7xowC1uvHrspsYZ",
+      "value": "0",
+      "payload": {
+        "type": "simulateCall",
+        "function": "get",
+        "args": [
+          "{\"vin\":\"11111\",\"action\":\"build\",\"payload\":{}}"
+        ]
+      }
+    },
+    "callback": "http://18.221.150.42/api/pay"
+  }
+}
